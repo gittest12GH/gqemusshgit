@@ -1,0 +1,3 @@
+ngrok tcp 5900
+curl --silent --show-error http://127.0.0.1:4040/api/tunnels | sed -nE 's/.*public_url":"tcp:..([^"]*).*/\1/p'
+qemu-system-x86_64 -cpu SandyBridge-v2 -smp sockets=1,cores=3,threads=3 -m 10G -vga virtio -device virtio-gpu-pci -device intel-hda -device hda-duplex -device rtl8139,netdev=n0 -netdev user,id=n0,dns=8.8.8.8 -device virtio-balloon-pci -vnc :0 -boot menu=on -machine usb=on -device usb-tablet -enable-kvm -hda win.qcow2
